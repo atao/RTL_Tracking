@@ -22,3 +22,12 @@ With log :
 ```bash
 rtl_433 -F json | python3 rtl_tracking.py >> output.log
 ```
+
+Just pipe json file :
+```bash
+cat my_json_file | python3 rtl_tracking.py
+```
+
+You can filter findings from rtl_sdr with **-R** option
+
+See list on [rtl_433](https://github.com/merbanan/rtl_433?tab=readme-ov-file#running)
