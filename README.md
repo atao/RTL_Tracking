@@ -4,6 +4,8 @@ The idea behind this project is to save the detections of [rtl_433](https://gith
 
 You will need an SDR device to use this program.
 
+For example, you can track TPMS from cars arround you.
+
 --
 
 For example, this program enabled me to learn how to retrieve data stream **sdout** and reuse into a python script.
@@ -18,5 +20,5 @@ rtl_433 -F json | python3 rtl_tracking.py
 ```
 With log :
 ```bash
-rtl_433 -F json | python3 rtl_tracking.py
+rtl_433 -F json | python3 rtl_tracking.py >> output.log
 ```
