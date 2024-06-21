@@ -28,6 +28,21 @@ class database:
         finally:
             conn.close()
 
+    def create_view(self, view_name, select_query):
+        try:
+            conn = sqlite3.connect(self.database)
+            cursor = conn.cursor()
+            query = f'CREATE VIEW IF NOT EXISTS "{view_name}" AS {select_query}'
+            cursor.execute(query)
+            conn.commit()
+            print(f"[+] View {view_name} successfully created!")
+        except Exception as e:
+            print(f"[!] Error: {e}")
+            conn.rollback()
+            raise e
+        finally:
+            conn.close()
+
     def store_data(self, table, data):
         try:
             conn = sqlite3.connect(self.database)
@@ -51,9 +66,17 @@ class database:
             print(f"[+] Last id {id} - {data}")
             conn.close()
 
+# Define the view query
+query = '''
+SELECT model, id, COUNT(*) as count
+FROM data
+GROUP BY id
+ORDER BY model
+'''
 
 json2db = database("data.db")
 json2db.prepare_database('data', {'time': 'TEXT', 'model': 'TEXT', 'id': 'TEXT'})
+json2db.create_view('tracking', query)
 
 try:
     for line in fileinput.input():
