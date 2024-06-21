@@ -1,3 +1,4 @@
+[![Lint Python](https://github.com/atao/rtl_tracking/actions/workflows/main.yml/badge.svg)](https://github.com/atao/rtl_tracking/actions/workflows/main.yml)
 # rtl_tracking
 
 The idea behind this project is to save the detections of [rtl_433](https://github.com/merbanan/rtl_433/) in a database.
